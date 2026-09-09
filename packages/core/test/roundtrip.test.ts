@@ -11,7 +11,8 @@ describe("catalog round-trip", () => {
 
   it("loads every device from the seed file", () => {
     expect(deviceCount(catalog)).toBe(29);
-    expect(Object.keys(catalog)).toEqual(["computers", "cameras"]);
+    expect(catalog.filter((d) => d.deviceType === "computer")).toHaveLength(8);
+    expect(catalog.filter((d) => d.deviceType === "camera")).toHaveLength(21);
   });
 
   it("keeps os/purpose top-level and list-typed", () => {
@@ -28,9 +29,11 @@ describe("catalog round-trip", () => {
     const fairy = findDevice(catalog, "fairy");
     expect(fairy?.nickname).toBe("Fairy");
     expect(fairy?.name).toBe("Power Mac G5");
+    expect(fairy?.deviceType).toBe("computer");
     const d100 = findDevice(catalog, "nikon-d100");
     expect(d100?.name).toBe("Nikon D100");
     expect(d100?.nickname).toBeUndefined();
+    expect(d100?.deviceType).toBe("camera");
   });
 
   it("structures capacities, resolutions, and lens ranges", () => {

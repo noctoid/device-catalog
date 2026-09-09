@@ -13,14 +13,14 @@ export type SpecValue =
   | { [key: string]: SpecValue };
 
 export interface Device {
-  /** Unique slug; primary key across all categories. */
+  /** Unique slug; primary key. */
   identifier: string;
+  /** Kind of device: "computer", "camera", … */
+  deviceType: string;
   /** Manufacturer product name ("Nikon D100", "Power Mac G5"). Absent for custom builds. */
   name?: string;
   /** Personal label ("Fairy", "P2"). Absent when the product name is the label. */
   nickname?: string;
-  /** Category the device belongs to (top-level YAML key). */
-  category: string;
   keywords: string[];
   chassis?: string;
   /** Installed operating systems; empty list when unknown. */
@@ -39,5 +39,5 @@ export interface Device {
   related?: string[];
 }
 
-/** A catalog is a mapping of category name to the devices in that category. */
-export type Catalog = Record<string, Device[]>;
+/** A catalog is a flat list of devices. */
+export type Catalog = Device[];

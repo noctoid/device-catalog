@@ -1,396 +1,423 @@
-computers:
-  - identifier: fairy
-    nickname: Fairy
-    name: Power Mac G5
-    chassis: tower
-    keywords:
-      - amd64
-      - amd-ryzen
-      - ddr4uecc
-      - amdgpu
-      - ssd
-      - sleeper
-    os: [windows-11-pro]
-    purpose: [daily-drive, game, work-at-home, photography]
-    specs:
-      cpu: amd-ryzen-r9-5950x
-      ram: { value: 32, unit: gb, type: ddr4-uecc }
-      ram-count: 4
-      mobo: asrock-x570m
-      gpu: amd-x7900xtx-24g
-      hdd: [{ value: 4, unit: tb }]
-      storage-model: crucial-p3-4t
-      psu: dell-1100w
+- identifier: fairy
+  device-type: computer
+  nickname: Fairy
+  name: Power Mac G5
+  chassis: tower
+  keywords:
+    - amd64
+    - amd-ryzen
+    - ddr4uecc
+    - amdgpu
+    - ssd
+    - sleeper
+  os: [windows-11-pro]
+  purpose: [daily-drive, game, work-at-home, photography]
+  specs:
+    cpu: amd-ryzen-r9-5950x
+    ram: { value: 32, unit: gb, type: ddr4-uecc }
+    ram-count: 4
+    mobo: asrock-x570m
+    gpu: amd-x7900xtx-24g
+    hdd: [{ value: 4, unit: tb }]
+    storage-model: crucial-p3-4t
+    psu: dell-1100w
 
-  - identifier: youkai
-    nickname: Youkai
-    name: MacBook Pro 16
-    chassis: laptop
-    keywords:
-      - apple-m3-max
-      - unified-ram
-      - aarch64
-      - ssd
-      - laptop
-    os: [mac-os-latest]
-    purpose: [daily-drive, work-to-go, photography]
-    specs:
-      cpu: apple-m3-max
-      ram: { value: 48, unit: gb, type: unified }
-      hdd: [{ value: 1, unit: tb }]
+- identifier: youkai
+  device-type: computer
+  nickname: Youkai
+  name: MacBook Pro 16
+  chassis: laptop
+  keywords:
+    - apple-m3-max
+    - unified-ram
+    - aarch64
+    - ssd
+    - laptop
+  os: [mac-os-latest]
+  purpose: [daily-drive, work-to-go, photography]
+  specs:
+    cpu: apple-m3-max
+    ram: { value: 48, unit: gb, type: unified }
+    hdd: [{ value: 1, unit: tb }]
 
-  - identifier: jinni
-    nickname: Jinni
-    chassis: tower
-    keywords:
-      - server
-      - nas
-      - storage
-      - amd64
-    os: [arch-linux]
-    purpose: [nas, storage]
-    specs:
-      cpu: amd-ryzen-r5-3500x
-      ram: { value: 16, unit: gb, type: ddr4-uecc }
-      hdd: [{ value: 16, unit: tb }, { value: 8, unit: tb }, { value: 8, unit: tb }]
-      case: silverstone-ft02
+- identifier: jinni
+  device-type: computer
+  nickname: Jinni
+  chassis: tower
+  keywords:
+    - server
+    - nas
+    - storage
+    - amd64
+  os: [arch-linux]
+  purpose: [nas, storage]
+  specs:
+    cpu: amd-ryzen-r5-3500x
+    ram: { value: 16, unit: gb, type: ddr4-uecc }
+    hdd: [{ value: 16, unit: tb }, { value: 8, unit: tb }, { value: 8, unit: tb }]
+    case: silverstone-ft02
 
-  - identifier: jinni-lto
-    nickname: Jinni LTO
-    chassis: rack-4u
-    keywords:
-      - server
-      - rack
-      - storage
-      - amd64
-    os: [debian]
-    purpose: [tape-drive, cold-storage]
-    notes: Simenese chassis
-    specs:
-      cpu: intel-pentium-g3258
-      ram: { value: 4, unit: gb, type: ddr3 }
-      hdd: [{ value: 8, unit: tb }]
+- identifier: jinni-lto
+  device-type: computer
+  nickname: Jinni LTO
+  chassis: rack-4u
+  keywords:
+    - server
+    - rack
+    - storage
+    - amd64
+  os: [debian]
+  purpose: [tape-drive, cold-storage]
+  notes: Simenese chassis
+  specs:
+    cpu: intel-pentium-g3258
+    ram: { value: 4, unit: gb, type: ddr3 }
+    hdd: [{ value: 8, unit: tb }]
 
-  - identifier: raincandy
-    nickname: RainCandy
-    chassis: tower
-    keywords:
-      - retro
-      - gaming
-      - dreamcore
-      - frutiger-aero
-    os: [windows-xp]
-    purpose: [retro-gaming, collectible]
-    specs:
-      cpu: amd-athlon64-7750
-      ram: { value: 1, unit: gb, type: ddr2 }
-      hdd: [{ value: 120, unit: gb }]
-      gpu: nvidia-7900gtx
+- identifier: raincandy
+  device-type: computer
+  nickname: RainCandy
+  chassis: tower
+  keywords:
+    - retro
+    - gaming
+    - dreamcore
+    - frutiger-aero
+  os: [windows-xp]
+  purpose: [retro-gaming, collectible]
+  specs:
+    cpu: amd-athlon64-7750
+    ram: { value: 1, unit: gb, type: ddr2 }
+    hdd: [{ value: 120, unit: gb }]
+    gpu: nvidia-7900gtx
 
-  - identifier: ibm-pc300gl
-    name: IBM PC 300GL
-    chassis: pizzabox
-    keywords:
-      - retro
-      - collectible
-    os: [windows-98]
-    purpose: [retro-gaming, collectible]
-    specs:
-      cpu: intel-pentium-ii-450
-      ram: { value: 128, unit: mb, type: sdr }
-      hdd: [{ value: 40, unit: gb, type: ide }]
-      gpu: 3dfx-voodoo3-2000
+- identifier: ibm-pc300gl
+  device-type: computer
+  name: IBM PC 300GL
+  chassis: pizzabox
+  keywords:
+    - retro
+    - collectible
+  os: [windows-98]
+  purpose: [retro-gaming, collectible]
+  specs:
+    cpu: intel-pentium-ii-450
+    ram: { value: 128, unit: mb, type: sdr }
+    hdd: [{ value: 40, unit: gb, type: ide }]
+    gpu: 3dfx-voodoo3-2000
 
-  - identifier: p2
-    nickname: P2
-    chassis: tower
-    keywords:
-      - retro
-      - collectible
-    os: []
-    purpose: [collectible]
-    specs:
-      cpu: intel-pentium-ii-350
-      ram: { value: 128, unit: mb, type: sdr }
-      hdd: []
-      gpu: s3-savage4
+- identifier: p2
+  device-type: computer
+  nickname: P2
+  chassis: tower
+  keywords:
+    - retro
+    - collectible
+  os: []
+  purpose: [collectible]
+  specs:
+    cpu: intel-pentium-ii-350
+    ram: { value: 128, unit: mb, type: sdr }
+    hdd: []
+    gpu: s3-savage4
 
-  - identifier: p3
-    nickname: P3
-    chassis: tower
-    keywords:
-      - retro
-      - collectible
-    os: [windows2000]
-    purpose: [collectible, retro-gaming]
-    specs:
-      cpu: intel-pentium-iii-1100mhz
-      ram: { value: 256, unit: mb, type: sdr }
-      hdd: []
-      gpu: nvidia-fx5200ultra
+- identifier: p3
+  device-type: computer
+  nickname: P3
+  chassis: tower
+  keywords:
+    - retro
+    - collectible
+  os: [windows2000]
+  purpose: [collectible, retro-gaming]
+  specs:
+    cpu: intel-pentium-iii-1100mhz
+    ram: { value: 256, unit: mb, type: sdr }
+    hdd: []
+    gpu: nvidia-fx5200ultra
 
-cameras:
-  - identifier: hasselblad-h4d60
-    name: Hasselblad H4D60
-    keywords:
-      - ccd
-      - medium-format
-      - leaf-shutter
-      - dslr
-      - modular
-    specs:
-      mount: H
-      sensor-type: ccd
-      sensor-size: { width: 54, height: 40, unit: mm }
-      pixel: { value: 60, unit: mp }
+- identifier: hasselblad-h4d60
+  device-type: camera
+  name: Hasselblad H4D60
+  keywords:
+    - ccd
+    - medium-format
+    - leaf-shutter
+    - dslr
+    - modular
+  specs:
+    mount: H
+    sensor-type: ccd
+    sensor-size: { width: 54, height: 40, unit: mm }
+    pixel: { value: 60, unit: mp }
 
-  - identifier: hasselblad-500cm
-    name: Hasselblad 500C/M
-    keywords:
-      - medium-format
-      - leaf-shutter
-      - slr
-      - modular
-      - film
-      - film-120-6x6
-    specs:
-      mount: V
+- identifier: hasselblad-500cm
+  device-type: camera
+  name: Hasselblad 500C/M
+  keywords:
+    - medium-format
+    - leaf-shutter
+    - slr
+    - modular
+    - film
+    - film-120-6x6
+  specs:
+    mount: V
 
-  - identifier: leica-m9
-    name: Leica M9
-    keywords:
-      - ccd
-      - full-frame
-      - rangefinder
-    specs:
-      mount: M
-      sensor-type: ccd
-      sensor-size: { width: 36, height: 24, unit: mm }
-      pixel: { value: 18.5, unit: mp }
+- identifier: leica-m9
+  device-type: camera
+  name: Leica M9
+  keywords:
+    - ccd
+    - full-frame
+    - rangefinder
+  specs:
+    mount: M
+    sensor-type: ccd
+    sensor-size: { width: 36, height: 24, unit: mm }
+    pixel: { value: 18.5, unit: mp }
 
-  - identifier: leica-m9-mono
-    name: Leica M9 Monochrom
-    keywords:
-      - ccd
-      - full-frame
-      - rangefinder
-    specs:
-      mount: M
-      sensor-type: ccd
-      sensor-size: { width: 36, height: 24, unit: mm }
-      pixel: { value: 18.5, unit: mp }
+- identifier: leica-m9-mono
+  device-type: camera
+  name: Leica M9 Monochrom
+  keywords:
+    - ccd
+    - full-frame
+    - rangefinder
+  specs:
+    mount: M
+    sensor-type: ccd
+    sensor-size: { width: 36, height: 24, unit: mm }
+    pixel: { value: 18.5, unit: mp }
 
-  - identifier: leica-m-240
-    name: Leica M Typ 240
-    keywords:
-      - full-frame
-      - cmos
-      - rangefinder
-    specs:
-      mount: M
-      sensor-type: cmos
-      sensor-size: { width: 36, height: 24, unit: mm }
-      pixel: { value: 24, unit: mp }
+- identifier: leica-m-240
+  device-type: camera
+  name: Leica M Typ 240
+  keywords:
+    - full-frame
+    - cmos
+    - rangefinder
+  specs:
+    mount: M
+    sensor-type: cmos
+    sensor-size: { width: 36, height: 24, unit: mm }
+    pixel: { value: 24, unit: mp }
 
-  - identifier: leica-m6
-    name: Leica M6
-    keywords:
-      - film-135
-      - full-frame
-      - film
-      - rangefinder
-    specs:
-      mount: M
+- identifier: leica-m6
+  device-type: camera
+  name: Leica M6
+  keywords:
+    - film-135
+    - full-frame
+    - film
+    - rangefinder
+  specs:
+    mount: M
 
-  - identifier: leica-3c
-    name: Leica IIIc
-    keywords:
-      - film-135
-      - film
-      - rangefinder
-    specs:
-      mount: l39
+- identifier: leica-3c
+  device-type: camera
+  name: Leica IIIc
+  keywords:
+    - film-135
+    - film
+    - rangefinder
+  specs:
+    mount: l39
 
-  - identifier: canon-ivsb
-    name: Canon IVsb
-    keywords:
-      - film-135
-      - film
-      - rangefinder
-    specs:
-      mount: l39
+- identifier: canon-ivsb
+  device-type: camera
+  name: Canon IVsb
+  keywords:
+    - film-135
+    - film
+    - rangefinder
+  specs:
+    mount: l39
 
-  - identifier: canon-5d
-    name: Canon 5D Classic
-    keywords:
-      - cmos
-      - full-frame
-      - dslr
-    specs:
-      mount: EF
-      sensor-type: cmos
-      sensor-size: { width: 36, height: 24, unit: mm }
-      pixel: { value: 12, unit: mp }
+- identifier: canon-5d
+  device-type: camera
+  name: Canon 5D Classic
+  keywords:
+    - cmos
+    - full-frame
+    - dslr
+  specs:
+    mount: EF
+    sensor-type: cmos
+    sensor-size: { width: 36, height: 24, unit: mm }
+    pixel: { value: 12, unit: mp }
 
-  - identifier: nikon-d100
-    name: Nikon D100
-    keywords:
-      - ccd
-      - aps-c
-      - dslr
-    specs:
-      mount: F
-      sensor-type: ccd
-      sensor-size: { width: 23.7, height: 15.6, unit: mm }
-      pixel: { value: 6.1, unit: mp }
+- identifier: nikon-d100
+  device-type: camera
+  name: Nikon D100
+  keywords:
+    - ccd
+    - aps-c
+    - dslr
+  specs:
+    mount: F
+    sensor-type: ccd
+    sensor-size: { width: 23.7, height: 15.6, unit: mm }
+    pixel: { value: 6.1, unit: mp }
 
-  - identifier: olympus-e300
-    name: Olympus E300
-    keywords:
-      - ccd
-      - four-thirds
-      - dslr
-    specs:
-      mount: FT
-      sensor-type: ccd
-      sensor-size: { width: 17.3, height: 13.0, unit: mm }
-      pixel: { value: 8, unit: mp }
+- identifier: olympus-e300
+  device-type: camera
+  name: Olympus E300
+  keywords:
+    - ccd
+    - four-thirds
+    - dslr
+  specs:
+    mount: FT
+    sensor-type: ccd
+    sensor-size: { width: 17.3, height: 13.0, unit: mm }
+    pixel: { value: 8, unit: mp }
 
-  - identifier: olympus-e410
-    name: Olympus E410
-    keywords:
-      - cmos
-      - four-thirds
-      - dslr
-    specs:
-      mount: FT
-      sensor-type: cmos
-      sensor-size: { width: 17.3, height: 13.0, unit: mm }
-      pixel: { value: 10, unit: mp }
+- identifier: olympus-e410
+  device-type: camera
+  name: Olympus E410
+  keywords:
+    - cmos
+    - four-thirds
+    - dslr
+  specs:
+    mount: FT
+    sensor-type: cmos
+    sensor-size: { width: 17.3, height: 13.0, unit: mm }
+    pixel: { value: 10, unit: mp }
 
-  - identifier: canon-eos55
-    name: Canon EOS55
-    keywords:
-      - film
-      - film-135
-      - slr
-    specs:
-      mount: EF
+- identifier: canon-eos55
+  device-type: camera
+  name: Canon EOS55
+  keywords:
+    - film
+    - film-135
+    - slr
+  specs:
+    mount: EF
 
-  - identifier: nikon-f4
-    name: Nikon F4
-    keywords:
-      - film
-      - film-135
-      - slr
-    specs:
-      mount: F
+- identifier: nikon-f4
+  device-type: camera
+  name: Nikon F4
+  keywords:
+    - film
+    - film-135
+    - slr
+  specs:
+    mount: F
 
-  - identifier: sigma-dp1
-    name: Sigma DP1
-    keywords:
-      - foveon
-      - aps-c
-      - compact
-    specs:
-      mount: fixed
-      sensor-type: foveon
-      sensor-size: { width: 20.7, height: 13.8, unit: mm }
-      pixel: { value: 14, unit: mp }
-      lens:
-        focal-length: [16.6]
-        f-stop: [4]
-        equivalent-focal-length: [28]
+- identifier: sigma-dp1
+  device-type: camera
+  name: Sigma DP1
+  keywords:
+    - foveon
+    - aps-c
+    - compact
+  specs:
+    mount: fixed
+    sensor-type: foveon
+    sensor-size: { width: 20.7, height: 13.8, unit: mm }
+    pixel: { value: 14, unit: mp }
+    lens:
+      focal-length: [16.6]
+      f-stop: [4]
+      equivalent-focal-length: [28]
 
-  - identifier: sony-cybershot-t20
-    name: Sony Cyber-shot T20
-    keywords:
-      - ccd
-      - compact
-    specs:
-      mount: fixed
-      sensor-type: ccd
-      sensor-size: { width: 5.76, height: 4.29, unit: mm }
-      pixel: { value: 8, unit: mp }
-      lens:
-        focal-length: [6.33, 19]
-        f-stop: [3.5, 4.3]
-        equivalent-focal-length: [38, 114]
+- identifier: sony-cybershot-t20
+  device-type: camera
+  name: Sony Cyber-shot T20
+  keywords:
+    - ccd
+    - compact
+  specs:
+    mount: fixed
+    sensor-type: ccd
+    sensor-size: { width: 5.76, height: 4.29, unit: mm }
+    pixel: { value: 8, unit: mp }
+    lens:
+      focal-length: [6.33, 19]
+      f-stop: [3.5, 4.3]
+      equivalent-focal-length: [38, 114]
 
-  - identifier: sony-cybershot-n2
-    name: Sony Cyber-shot N2
-    keywords:
-      - ccd
-      - compact
-    specs:
-      mount: fixed
-      sensor-type: ccd
-      sensor-size: { width: 7.6, height: 5.7, unit: mm }
-      pixel: { value: 10, unit: mp }
-      lens:
-        focal-length: [7.9, 23.7]
-        f-stop: [2.8, 5.4]
-        equivalent-focal-length: [38, 114]
+- identifier: sony-cybershot-n2
+  device-type: camera
+  name: Sony Cyber-shot N2
+  keywords:
+    - ccd
+    - compact
+  specs:
+    mount: fixed
+    sensor-type: ccd
+    sensor-size: { width: 7.6, height: 5.7, unit: mm }
+    pixel: { value: 10, unit: mp }
+    lens:
+      focal-length: [7.9, 23.7]
+      f-stop: [2.8, 5.4]
+      equivalent-focal-length: [38, 114]
 
-  - identifier: minolta-dimage-xt
-    name: Minolta DiMAGE Xt
-    keywords:
-      - ccd
-      - compact
-    specs:
-      mount: fixed
-      sensor-type: ccd
-      sensor-size: { width: 5.3, height: 4.0, unit: mm }
-      pixel: { value: 3.2, unit: mp }
-      lens:
-        focal-length: [5.7, 17.1]
-        f-stop: [2.8, 3.6]
-        equivalent-focal-length: [37, 111]
+- identifier: minolta-dimage-xt
+  device-type: camera
+  name: Minolta DiMAGE Xt
+  keywords:
+    - ccd
+    - compact
+  specs:
+    mount: fixed
+    sensor-type: ccd
+    sensor-size: { width: 5.3, height: 4.0, unit: mm }
+    pixel: { value: 3.2, unit: mp }
+    lens:
+      focal-length: [5.7, 17.1]
+      f-stop: [2.8, 3.6]
+      equivalent-focal-length: [37, 111]
 
-  - identifier: canon-powershot-a400
-    name: Canon PowerShot A400
-    keywords:
-      - ccd
-      - compact
-    specs:
-      mount: fixed
-      sensor-type: ccd
-      sensor-size: { width: 4.5, height: 3.4, unit: mm }
-      pixel: { value: 3.2, unit: mp }
-      lens:
-        focal-length: [5.9, 13.2]
-        f-stop: [3.8]
-        equivalent-focal-length: [45, 100]
+- identifier: canon-powershot-a400
+  device-type: camera
+  name: Canon PowerShot A400
+  keywords:
+    - ccd
+    - compact
+  specs:
+    mount: fixed
+    sensor-type: ccd
+    sensor-size: { width: 4.5, height: 3.4, unit: mm }
+    pixel: { value: 3.2, unit: mp }
+    lens:
+      focal-length: [5.9, 13.2]
+      f-stop: [3.8]
+      equivalent-focal-length: [45, 100]
 
-  - identifier: fujifilm-w3
-    name: Fujifilm FinePix Real 3D W3
-    keywords:
-      - ccd
-      - compact
-      - 3d
-      - dual-lens
-    notes: dual lens, each with identical specs for 3D capture
-    specs:
-      mount: fixed
-      sensor-type: ccd
-      sensor-size: { width: 6.16, height: 4.62, unit: mm }
-      pixel: { value: 10, unit: mp }
-      lens:
-        focal-length: [6.3, 18.9]
-        f-stop: [3.7, 4.2]
-        equivalent-focal-length: [35, 105]
+- identifier: fujifilm-w3
+  device-type: camera
+  name: Fujifilm FinePix Real 3D W3
+  keywords:
+    - ccd
+    - compact
+    - 3d
+    - dual-lens
+  notes: dual lens, each with identical specs for 3D capture
+  specs:
+    mount: fixed
+    sensor-type: ccd
+    sensor-size: { width: 6.16, height: 4.62, unit: mm }
+    pixel: { value: 10, unit: mp }
+    lens:
+      focal-length: [6.3, 18.9]
+      f-stop: [3.7, 4.2]
+      equivalent-focal-length: [35, 105]
 
-  - identifier: sony-cybershot-t700
-    name: Sony Cyber-shot T700
-    keywords:
-      - ccd
-      - compact
-    specs:
-      mount: fixed
-      sensor-type: ccd
-      sensor-size: { width: 6.16, height: 4.62, unit: mm }
-      pixel: { value: 10, unit: mp }
-      lens:
-        focal-length: [6.2, 24.7]
-        f-stop: [3.5, 4.6]
-        equivalent-focal-length: [35, 140]
+- identifier: sony-cybershot-t700
+  device-type: camera
+  name: Sony Cyber-shot T700
+  keywords:
+    - ccd
+    - compact
+  specs:
+    mount: fixed
+    sensor-type: ccd
+    sensor-size: { width: 6.16, height: 4.62, unit: mm }
+    pixel: { value: 10, unit: mp }
+    lens:
+      focal-length: [6.2, 24.7]
+      f-stop: [3.5, 4.6]
+      equivalent-focal-length: [35, 140]

@@ -5,17 +5,23 @@ import { computed } from "vue";
 const props = defineProps<{ catalog: Catalog }>();
 const emit = defineEmits<{ select: [device: Device] }>();
 
-const categories = computed(() =>
-  Object.entries(props.catalog).map(([name, devices]) => ({ name, devices })),
-);
+const groups = computed(() => {
+  const byType = new Map<string, Device[]>();
+  for (const device of props.catalog) {
+    const list = byType.get(device.deviceType) ?? [];
+    list.push(device);
+    byType.set(device.deviceType, list);
+  }
+  return [...byType.entries()].map(([type, devices]) => ({ type, devices }));
+});
 </script>
 
 <template>
   <div class="catalog">
-    <fieldset v-for="category in categories" :key="category.name" class="category">
-      <legend>{{ category.name }} ({{ category.devices.length }})</legend>
+    <fieldset v-for="group in groups" :key="group.type" class="group">
+      <legend>{{ group.type }} ({{ group.devices.length }})</legend>
       <div class="grid">
-        <article v-for="device in category.devices" :key="device.identifier" class="card" @click="emit('select', device)">
+        <article v-for="device in group.devices" :key="device.identifier" class="card" @click="emit('select', device)">
           <div class="card-name">{{ device.nickname ?? device.name ?? device.identifier }}</div>
           <div v-if="device.nickname && device.name" class="card-product">{{ device.name }}</div>
           <code class="card-id">{{ device.identifier }}</code>
@@ -35,7 +41,7 @@ const categories = computed(() =>
   gap: 0.5rem;
 }
 
-.category {
+.group {
   margin: 0;
 }
 

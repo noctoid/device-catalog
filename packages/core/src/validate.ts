@@ -24,7 +24,7 @@ export function validateDevice(
     errors.push(`identifier "${device.identifier}" is already in use`);
   }
 
-  if (!device.category.trim()) errors.push("category is required");
+  if (!device.deviceType.trim()) errors.push("device-type is required");
 
   const hasLabel =
     (device.name ?? "").trim() !== "" || (device.nickname ?? "").trim() !== "";
@@ -39,7 +39,5 @@ export function validateDevice(
 
 function identifierExists(catalog: Catalog, identifier: string, editingId?: string): boolean {
   if (identifier === editingId) return false;
-  return Object.values(catalog).some((devices) =>
-    devices.some((device) => device.identifier === identifier),
-  );
+  return catalog.some((device) => device.identifier === identifier);
 }

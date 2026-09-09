@@ -20,8 +20,8 @@ catalog pleasant to browse and trivial to maintain.
 - [ ] Display all devices in a grid view
 - [ ] Display all devices in a list/table view (toggle between grid and list)
 - [ ] Device detail view rendering every field present in the YAML
-- [ ] Search, filter by category, and filter by keyword tags
-- [ ] Group by category (top-level YAML keys: `computers`, `cameras`, …)
+- [ ] Search, filter by device type, and filter by keyword tags
+- [ ] Group by device type
 - [ ] Run as a native desktop app
 
 ## Non-goals (v1)
@@ -30,16 +30,17 @@ catalog pleasant to browse and trivial to maintain.
 - Photo/attachment upload per device
 - Import from other formats or scraping
 - Undo / version history (the YAML file itself is the history)
-- Editing the category/schema definitions from within the app
+- Editing the device-type/schema definitions from within the app
 
 ## Data model
 
-`device-list.yaml` is a map of `category -> device[]`. Currently `computers`
-and `cameras`; extensible (lenses, phones, audio, …).
+`device-list.yaml` is a flat list of devices. Each device declares a
+`device-type` (`computer`, `camera`); extensible (lenses, phones, audio, …).
 
 Each device:
 
 - `identifier` — string, unique slug, primary key
+- `device-type` — string, the device kind (`computer`, `camera`); extensible
 - `name` — manufacturer product name ("Nikon D100", "Power Mac G5"); absent
   for custom builds
 - `nickname` — personal label ("Fairy", "P2"); absent when the product name is
@@ -72,9 +73,9 @@ type SpecValue =
 
 interface Device {
   identifier: string;
+  deviceType: string;  // "computer", "camera", …
   name?: string;        // product name
   nickname?: string;    // personal label
-  category: string;
   keywords: string[];
   chassis?: string;
   os: string[];
@@ -88,9 +89,7 @@ interface Device {
   related?: string[];
 }
 
-interface Catalog {
-  [category: string]: Device[];
-}
+type Catalog = Device[];
 ```
 
 ## Tech decision: Tauri
@@ -134,14 +133,14 @@ apps/desktop           # Tauri shell -> core, fs plugin storage adapter (in-plac
 
 ### 3. Core state & browse UI
 - [ ] App state store: load catalog, add/edit/remove actions
-- [ ] Grid view (cards: name, category, keyword chips)
+- [ ] Grid view (cards: name, device-type, keyword chips)
 - [ ] List/table view + grid/list toggle
-- [ ] Category grouping
-- [ ] Search, category filter, keyword tag filter
+- [ ] Device-type grouping
+- [ ] Search, device-type filter, keyword tag filter
 - [ ] Device detail view (renders every field, nested specs, lists)
 
 ### 4. Dialogs (add/edit/remove)
-- [ ] Add/edit modal: identifier, name, category, keywords, specs, os, purpose
+- [ ] Add/edit modal: identifier, name, device-type, keywords, specs, os, purpose
 - [ ] Specs editor supporting string / number / list / nested map values
 - [ ] Keyword tag editor (add/remove chips)
 - [ ] Remove confirmation dialog

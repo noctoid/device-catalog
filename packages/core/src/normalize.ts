@@ -40,9 +40,9 @@ function coerceSpecMap(record: Record<string, unknown>): Record<string, SpecValu
  * quirks (`keyword` singular, `os`/`purpose` nested under `specs`) so old
  * files don't break.
  */
-export function normalizeDevice(raw: unknown, category: string): Device {
+export function normalizeDevice(raw: unknown): Device {
   if (!isRecord(raw)) {
-    throw new Error(`device in category "${category}" must be a mapping`);
+    throw new Error("device must be a mapping");
   }
 
   const keywords = toStringList(raw.keywords ?? raw.keyword);
@@ -56,7 +56,7 @@ export function normalizeDevice(raw: unknown, category: string): Device {
 
   const device: Device = {
     identifier: String(raw.identifier ?? ""),
-    category,
+    deviceType: String(raw["device-type"] ?? ""),
     keywords,
     os: toStringList(raw.os ?? rawSpecs.os),
     purpose: toStringList(raw.purpose ?? rawSpecs.purpose),
@@ -87,16 +87,8 @@ export function normalizeDevice(raw: unknown, category: string): Device {
 }
 
 export function normalizeCatalog(raw: unknown): Catalog {
-  if (!isRecord(raw)) {
-    throw new Error("catalog must be a mapping of category -> devices");
+  if (!Array.isArray(raw)) {
+    throw new Error("catalog must be a list of devices");
   }
-
-  const out: Catalog = {};
-  for (const [category, devices] of Object.entries(raw)) {
-    if (!Array.isArray(devices)) {
-      throw new Error(`category "${category}" must be a list of devices`);
-    }
-    out[category] = devices.map((device) => normalizeDevice(device, category));
-  }
-  return out;
+  return raw.map((device) => normalizeDevice(device));
 }

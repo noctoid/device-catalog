@@ -106,6 +106,7 @@ onBeforeUnmount(() => {
         <div v-if="device.name" class="row"><span class="k">Name</span><span class="v">{{ device.name }}</span></div>
         <div v-if="device.nickname" class="row"><span class="k">Nickname</span><span class="v">{{ device.nickname }}</span></div>
         <div class="row"><span class="k">Identifier</span><span class="v">{{ device.identifier }}</span></div>
+        <div class="row"><span class="k">Type</span><span class="v">{{ device.deviceType }}</span></div>
         <div v-if="device.chassis" class="row"><span class="k">Chassis</span><span class="v">{{ device.chassis }}</span></div>
         <div v-if="device.os.length" class="row"><span class="k">OS</span><span class="v">{{ device.os.join(", ") }}</span></div>
         <div v-if="device.purpose.length" class="row"><span class="k">Purpose</span><span class="v">{{ device.purpose.join(", ") }}</span></div>

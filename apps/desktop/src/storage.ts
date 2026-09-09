@@ -1,6 +1,6 @@
 import { appDataDir, join } from "@tauri-apps/api/path";
 import { open } from "@tauri-apps/plugin-dialog";
-import { exists, readTextFile, writeTextFile } from "@tauri-apps/plugin-fs";
+import { exists, mkdir, readTextFile, writeTextFile } from "@tauri-apps/plugin-fs";
 import seedYaml from "../../../device-list.yaml?raw";
 
 /** Name of the catalog file inside the Tauri app-data directory. */
@@ -20,7 +20,10 @@ function isTauri(): boolean {
 export async function loadCatalogYaml(): Promise<string> {
   if (!isTauri()) return seedYaml;
 
-  const filePath = await join(await appDataDir(), DATA_FILE);
+  const dataDir = await appDataDir();
+  await mkdir(dataDir, { recursive: true });
+
+  const filePath = await join(dataDir, DATA_FILE);
   if (await exists(filePath)) {
     return await readTextFile(filePath);
   }

@@ -11,13 +11,18 @@ import {
 import { DeviceGrid, DeviceWindow, MenuBar } from "@device-catalog/ui";
 import { loadCatalogYaml, openCatalogFile } from "./storage";
 
-const catalog = ref<Catalog>({});
+const catalog = ref<Catalog>([]);
 const selectedDevice = ref<Device | undefined>();
+const loadError = ref<string | undefined>();
 const total = computed(() => deviceCount(catalog.value));
-const categoryCount = computed(() => Object.keys(catalog.value).length);
+const deviceTypeCount = computed(() => new Set(catalog.value.map((d) => d.deviceType)).size);
 
 onMounted(async () => {
-  catalog.value = normalizeCatalog(parseCatalog(await loadCatalogYaml()));
+  try {
+    catalog.value = normalizeCatalog(parseCatalog(await loadCatalogYaml()));
+  } catch (error) {
+    loadError.value = error instanceof Error ? error.message : String(error);
+  }
 });
 
 async function handleAction(id: string) {
@@ -57,12 +62,13 @@ function resolvePhoto(path: string): string {
     </div>
     <MenuBar @action="handleAction" />
     <div class="window-body">
-      <p class="subtitle">{{ total }} devices across {{ categoryCount }} categories</p>
+      <p v-if="loadError" class="error">{{ loadError }}</p>
+      <p class="subtitle">{{ total }} devices across {{ deviceTypeCount }} device types</p>
       <DeviceGrid :catalog="catalog" @select="selectedDevice = $event" />
     </div>
     <div class="status-bar">
       <p class="status-bar-field">{{ total }} devices</p>
-      <p class="status-bar-field">{{ categoryCount }} categories</p>
+      <p class="status-bar-field">{{ deviceTypeCount }} device types</p>
     </div>
   </div>
 
@@ -94,5 +100,11 @@ function resolvePhoto(path: string): string {
 
 .subtitle {
   margin: 0 0 0.5rem;
+}
+
+.error {
+  color: #a00;
+  margin: 0 0 0.5rem;
+  white-space: pre-wrap;
 }
 </style>
